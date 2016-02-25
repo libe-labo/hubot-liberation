@@ -1,6 +1,6 @@
 # hubot-liberation
 
-A hubot script that does the things
+A hubot script that alerts a channel whenever there's an alert on http://www.liberation.fr/.
 
 See [`src/liberation.coffee`](src/liberation.coffee) for full documentation.
 
@@ -16,11 +16,4 @@ Then add **hubot-liberation** to your `external-scripts.json`:
 [
   "hubot-liberation"
 ]
-```
-
-## Sample Interaction
-
-```
-user1>> hubot hello
-hubot>> hello!
 ```

@@ -5,7 +5,7 @@ chai.use require 'sinon-chai'
 expect = chai.expect
 
 describe 'liberation', ->
-  beforeEach ->
-    @robot = { }
+    beforeEach ->
+        @robot = { }
 
-    require('../src/liberation')(@robot)
+        require('../src/liberation')(@robot)

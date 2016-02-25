@@ -19,23 +19,28 @@ module.exports = (robot) ->
     do ->
         last_alert = null
 
-        getFullUrl = (url) ->
-            return url if url[0] isnt '/'
-            return "http://www.liberation.fr#{body.url}"
+        getFullUrl = (url) -> if url[0] isnt '/' then url else "http://www.liberation.fr#{url}"
 
         checkAlert = ->
             request 'http://www.liberation.fr/alert/?v=beta&ajax', (error, response, body) ->
                 body = JSON.parse body
                 if (Object.keys body).length > 0
-                    if last_alert == null or (body.url isnt last_alert.url and body.title isnt last_alert.title)
+                    body.id = ((body.url.match /_(\d+)\/?$/) or [])[1]
+                    if body.id?
                         last_alert = body
-                        robot.messageRoom ALERT_CHANNEL, ":loudspeaker: *#{body.slug}* #{body.title} #{getFullUrl(body.url)}"
-                else
-                    last_alert = null
+                        if (not last_alert?) or (body.id isnt last_alert.id)
+                            robot.messageRoom ALERT_CHANNEL, ":loudspeaker: *#{body.slug}* #{body.title} #{getFullUrl(body.url)}"
+                    else
+                        last_alert = null
                 robot.brain.set ALERT_BRAIN_KEY, last_alert
                 setTimeout checkAlert, ALERT_CHECK_INTERVAL
+                null
+            null
 
+        # Retrieve from brain
         robot.brain.once 'loaded', -> last_alert = robot.brain.get ALERT_BRAIN_KEY
 
         # Initial call
         do checkAlert
+        null
+    null

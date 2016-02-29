@@ -7,10 +7,10 @@
     "keywords": "hubot, hubot-scripts, news, media",
     "repository": {
         "type": "git",
-        "url": "git://github.com/hubot-scripts/hubot-liberation.git"
+        "url": "git://github.com/libe-sixplus/hubot-liberation.git"
     },
     "bugs": {
-        "url": "https://github.com/hubot-scripts/hubot-liberation/issues"
+        "url": "https://github.com/libe-sixplus/hubot-liberation/issues"
     },
     "dependencies": {
         "request": "^2.69.0"

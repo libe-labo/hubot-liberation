@@ -27,9 +27,9 @@ module.exports = (robot) ->
                 if (Object.keys body).length > 0
                     body.id = ((body.url.match /_(\d+)\/?$/) or [])[1]
                     if body.id?
-                        last_alert = body
                         if (not last_alert?) or (body.id isnt last_alert.id)
                             robot.messageRoom ALERT_CHANNEL, ":loudspeaker: *#{body.slug}* #{body.title} #{getFullUrl(body.url)}"
+                        last_alert = body
                     else
                         last_alert = null
                 robot.brain.set ALERT_BRAIN_KEY, last_alert

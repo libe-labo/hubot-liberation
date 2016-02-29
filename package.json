@@ -1,7 +1,7 @@
 {
     "name": "hubot-liberation",
     "description": "A hubot script that alerts a channel whenever there's an alert on http://www.liberation.fr/",
-    "version": "0.1.1",
+    "version": "0.1.2",
     "author": "Paul Joannon <hello@pauljoannon.com>",
     "license": "MIT",
     "keywords": "hubot, hubot-scripts, news, media",
